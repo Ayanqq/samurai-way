@@ -2,15 +2,17 @@ import React from 'react';
 import './App.css';
 import {Header} from "./Components/header/Header";
 import {Footer} from "./Components/footer/Footer";
-import {Technologies} from "./Components/Technologies/Technologies";
+import {Sidebar} from "./Components/sidebar/Sidebar";
+import {Content} from "./Components/Main/Main";
 
 
 function App() {
     return (
-        <div>
+        <div className={'app-wrapper'}>
             <Header/>
-            <Technologies/>
-            <Footer/>
+            <Sidebar/>
+            <Content/>
+            {/*<Footer/>*/}
         </div>
     )
 }
