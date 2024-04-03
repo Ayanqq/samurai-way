@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from "styled-components";
 import {theme} from "../../styles/Theme";
+import {s} from './Sidebar_Styles'
 
 export const Sidebar = () => {
     return (
-        <StyledSidebar>
+        <s.StyledSidebar>
             <ul>
                 <li><a href="">Profile</a></li>
                 <li><a href="">Messages</a></li>
@@ -12,12 +13,6 @@ export const Sidebar = () => {
                 <li><a href="">Music</a></li>
                 <li><a href="">Settings</a></li>
             </ul>
-        </StyledSidebar>
+        </s.StyledSidebar>
     );
 };
-
-const StyledSidebar = styled.nav`
-  grid-area: n;
-  background-color: ${theme.colors.bgc};
-  border:1px solid black;
-`

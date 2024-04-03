@@ -1,9 +1,10 @@
 import React from 'react';
 import './App.css';
 import {Header} from "./Components/header/Header";
-import {Footer} from "./Components/footer/Footer";
 import {Sidebar} from "./Components/sidebar/Sidebar";
-import {Content} from "./Components/Main/Main";
+import {Content} from "./Components/main/Main";
+import {Dialogs} from "./Components/dialogs/Dialogs";
+import {StyledMain} from "./styles/GlobalStyles";
 
 
 function App() {
@@ -11,8 +12,11 @@ function App() {
         <div className={'app-wrapper'}>
             <Header/>
             <Sidebar/>
-            <Content/>
-            {/*<Footer/>*/}
+            <StyledMain>
+                {/*<Content/>*/}
+                <Dialogs/>
+            </StyledMain>
+
         </div>
     )
 }
