@@ -1,26 +1,32 @@
-import { NavLink } from "react-router-dom";
 import s from "./Dialogs.module.css"
 // import {s} from '../main/Main_Styles'
 import styled from "styled-components";
-import { DialogItem } from "./Dialog";
-import { Message } from "./Message";
+import {DialogItem} from "./DialogItem/Dialog";
+import {Message} from "./Message/Message";
+import {RootStateType, StateType} from "../../redux/state";
+import {createRef} from "react";
 
 
-export const Dialogs = () => {
+export const Dialogs = ({messagesPage}:RootStateType) => {
+
+    const newMessage = createRef<HTMLTextAreaElement>()
+
+    const addMessageHandler = () => {
+        let message = newMessage.current?.value
+        alert(message)
+    }
+
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-
-                <DialogItem name="Ayan" id={1} />
-                <DialogItem name="Sasha" id={2} />
-                <DialogItem name="Valera" id={3} />
-                <DialogItem name="Misha" id={4} />
-
+                <DialogItem messagesPage={messagesPage}/>
             </div>
             <div className={s.messages}>
-                <Message text="Hello"/>
-                <Message text="How ar]eqw you?"/>
-                <Message text="You are welcome"/>
+                <Message messagesPage={messagesPage}/>
+            </div>
+            <div>
+                <textarea ref={newMessage}></textarea>
+                <button onClick={addMessageHandler}>Send!!!</button>
             </div>
         </div>
     );

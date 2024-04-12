@@ -1,10 +1,12 @@
 import React from 'react';
 import styled from "styled-components";
-import { theme } from "../../styles/Theme";
-import { s } from './Sidebar_Styles'
-import { NavLink } from 'react-router-dom';
+import {s} from './Sidebar_Styles'
+import {NavLink} from 'react-router-dom';
+import {RootStateType, StateType} from "../../redux/state";
 
-export const Sidebar = () => {
+
+
+export const Sidebar = ({sidebar}:RootStateType) => {
     return (
         <s.StyledSidebar>
             <StyledUl>
@@ -13,7 +15,21 @@ export const Sidebar = () => {
                 <li><NavLink to="/news">News</NavLink></li>
                 <li><NavLink to="/music">Music</NavLink></li>
                 <li><NavLink to="/settings">Settings</NavLink></li>
+
+                <div>
+                    <h2>Friends</h2>
+                    <div>
+                        <ul style={{display:'flex', listStyle:"none", gap:'10px', padding:'0'}}>
+                            {sidebar?.map(el => {
+                                return (
+                                    <li key={el.id}>{el.name}</li>
+                                )
+                            })}
+                        </ul>
+                    </div>
+                </div>
             </StyledUl>
+
         </s.StyledSidebar>
     );
 };
