@@ -2,17 +2,12 @@ import React from 'react';
 import s from './../MyPosts.module.css';
 import {ProfilePageType} from "../../../../redux/state";
 
-export type PostData = {
-    id: number;
-    message: string
-    likesCount: number;
-}
 
 
 export const Post = ({posts}:ProfilePageType) => {
     return (
         <>
-        {posts?.map(el => {
+        {posts.map(el => {
             return (
                 <div key={el.id} className={s.post}>
                     <div>

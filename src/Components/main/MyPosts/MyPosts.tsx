@@ -1,8 +1,9 @@
 import React, {createRef} from 'react';
 import {Post} from "./Post/Post";
-import {RootStateType} from "../../../redux/state";
+import {ProfilePageType, RootStateType} from "../../../redux/state";
 
-export const MyPosts = ({profilePage}:RootStateType) => {
+
+export const MyPosts = ({posts}:ProfilePageType) => {
 
     const addPost = () => {
         let text = newPostElement.current?.value
@@ -22,7 +23,7 @@ export const MyPosts = ({profilePage}:RootStateType) => {
                 <button onClick={addPost}>Add new post</button>
             </div>
             <div>
-                <Post posts={profilePage?.posts}/>
+                <Post posts={posts}/>
             </div>
         </div>
     );

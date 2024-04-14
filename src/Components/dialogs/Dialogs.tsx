@@ -3,11 +3,11 @@ import s from "./Dialogs.module.css"
 import styled from "styled-components";
 import {DialogItem} from "./DialogItem/Dialog";
 import {Message} from "./Message/Message";
-import {RootStateType, StateType} from "../../redux/state";
+import {MessagesPageType} from "../../redux/state";
 import {createRef} from "react";
 
 
-export const Dialogs = ({messagesPage}:RootStateType) => {
+export const Dialogs = ({messagesPage}:{ messagesPage: MessagesPageType}) => {
 
     const newMessage = createRef<HTMLTextAreaElement>()
 

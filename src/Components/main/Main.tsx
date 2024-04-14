@@ -4,10 +4,12 @@ import {MyPosts} from "./MyPosts/MyPosts";
 import {Profile} from "./profile/Profile";
 import Photo1 from "./../../assets/Asana3808_Dashboard_Standard.jpg"
 import Photo2 from "./../../assets/4k-beautiful-nature-abstract-background_939808-11390.avif"
-import {RootStateType, StateType} from "../../redux/state";
+import {ProfilePageType} from "../../redux/state";
 
-
-export const Content = ({profilePage}:RootStateType) => {
+export type PropsType = {
+    profilePage: ProfilePageType
+}
+export const Main = ({profilePage}:PropsType) => {
     return (
         <s.StyledMain>
             <img src={Photo2}
@@ -16,7 +18,7 @@ export const Content = ({profilePage}:RootStateType) => {
                 <Profile src={Photo1} alt={'smth photo'}/>
             </s.ProfileInfo>
 
-            <MyPosts profilePage={profilePage}/>
+            <MyPosts posts={profilePage.posts}/>
 
         </s.StyledMain>
     );
