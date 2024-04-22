@@ -1,13 +1,15 @@
 import React from 'react';
 import s from './../MyPosts.module.css';
-import {ProfilePageType} from "../../../../redux/state";
+import {PostType} from "../../../../redux/state";
 
+type PostPropsType = {
+    post:PostType[]
+}
 
-
-export const Post = ({posts}:ProfilePageType) => {
+export const Post = ({post}:PostPropsType) => {
     return (
         <>
-        {posts.map(el => {
+        {post.map(el => {
             return (
                 <div key={el.id} className={s.post}>
                     <div>

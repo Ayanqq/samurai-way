@@ -1,11 +1,14 @@
 import s from "../Dialogs.module.css"
-import {MessagesPageType} from "../../../redux/state";
+import {MessageType} from "../../../redux/state";
 
+type MessagePropsType = {
+    messageData:MessageType[]
+}
 
-export const Message = ({messagesPage}: {messagesPage: MessagesPageType}) => {
+export const Message = ({messageData}:MessagePropsType) => {
     return (
         <>
-            {messagesPage.messages.map(el => {
+            {messageData.map(el => {
                 return (
                     <div className={s.message} key={el.id}>{el.name}</div>
                 )

@@ -2,13 +2,14 @@ import React from 'react';
 import styled from "styled-components";
 import {s} from './Sidebar_Styles'
 import {NavLink} from 'react-router-dom';
-import {friendsType} from "../../redux/state";
+import {SidebarType} from "../../redux/state";
+import {Friends} from "./friends/Friends";
 
-type SidebarType = {
-    friends:friendsType[]
+type SidebarPropsType = {
+    sidebarPage:SidebarType
 }
 
-export const Sidebar = ({friends}:SidebarType) => {
+export const Sidebar = ({sidebarPage}:SidebarPropsType) => {
     return (
         <s.StyledSidebar>
             <StyledUl>
@@ -21,13 +22,7 @@ export const Sidebar = ({friends}:SidebarType) => {
                 <div>
                     <h2>Friends</h2>
                     <div>
-                        <ul style={{display:'flex', listStyle:"none", gap:'10px', padding:'0'}}>
-                            {friends.map(el => {
-                                return (
-                                    <li key={el.id}>{el.name}</li>
-                                )
-                            })}
-                        </ul>
+                        <Friends friendsData={sidebarPage.friends}/>
                     </div>
                 </div>
             </StyledUl>

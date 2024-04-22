@@ -1,44 +1,55 @@
-export type PostsType = {
-    id: number;
-    message: string;
-    likesCount: number
+import {rerenderEntireTree} from "../render";
+
+export type PostType = {
+    id:number
+    message:string
+    likesCount:number
 }
 
-export type DialogsType = {
-    id: number;
-    name: string;
+export type MessageType = {
+    id:number
+    name:string
 }
 
-export type MessagesType = {
-    id: number;
-    name: string;
+export type DialogType = {
+    id:number
+    name:string
+}
+
+export type FriendType = {
+    id:number
+    name:string
+    avatar:string
 }
 
 export type ProfilePageType = {
-    posts: PostsType[]
-
+    posts:PostType[]
+    newPostText:string
 }
 
-export type MessagesPageType = {
-    dialogs: DialogsType[]
-    messages: MessagesType[]
+export type MessagesPageTypes = {
+    messages:MessageType[]
+    dialogs:DialogType[]
 }
 
-export type friendsType = {
-    id: number;
-    name: string;
-    avatar: string;
-}
-
-export type SidebarPageType = {
-    friends: friendsType[]
+export type SidebarType = {
+    friends:FriendType[]
 }
 
 export type RootStateType = {
-    profilePage: ProfilePageType
-    messagesPage: MessagesPageType
-    sidebarPage: SidebarPageType
+    profilePage: {
+        posts: PostType[]
+        newPostText: string
+    }
+    messagesPage: {
+        messages:MessageType[],
+        dialogs:DialogType[]
+    }
+    sidebarPage: {
+        friends:FriendType[]
+    }
 }
+
 
 export const state: RootStateType = {
     profilePage: {
@@ -47,6 +58,7 @@ export const state: RootStateType = {
             {id: 2, message: 'It\'s my first post', likesCount: 11},
             {id: 3, message: 'It\'s my second post', likesCount: 0},
         ],
+        newPostText: 'IT-INCUBATOR'
     },
     messagesPage: {
         messages: [
@@ -70,3 +82,8 @@ export const state: RootStateType = {
     }
 }
 
+export const addPost = (postMessage:string) => {
+    let newPost = {id: 4, message:postMessage, likesCount: 0};
+    state.profilePage.posts.push(newPost)
+    rerenderEntireTree(state)
+}

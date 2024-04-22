@@ -5,33 +5,35 @@ import {Sidebar} from "./Components/sidebar/Sidebar";
 import {Main} from "./Components/main/Main";
 import {Dialogs} from "./Components/dialogs/Dialogs";
 import {StyledMain} from "./styles/GlobalStyles";
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import {Music} from './Components/music/Music';
 import {News} from './Components/news/News';
 import {Settings} from './Components/settings/Settings';
 import {RootStateType} from "./redux/state";
 
-
-type AppType =  {
-    state: RootStateType
+type AppPropsType = {
+    state:RootStateType,
+    addPost:(postTitle:string)=> void
 }
-function App({state}:AppType) {
+
+function App({
+    state,
+    addPost
+             }:AppPropsType) {
     return (
-        <BrowserRouter>
             <div className={'app-wrapper'}>
-                <Header />
-                <Sidebar friends={state.sidebarPage.friends}/>
+                <Header/>
+                <Sidebar sidebarPage={state.sidebarPage}/>
                 <StyledMain>
                     {/*<Route component={Dialogs } path='/dialogs'/>*/}
                     <Route component={News} path='/news'/>
                     <Route component={Music} path='/music'/>
                     <Route component={Settings} path='/settings'/>
 
-                    <Route render={()=> <Main profilePage={state.profilePage}/>} path='/profile'/>
-                    <Route render={()=> <Dialogs  messagesPage={state.messagesPage} /> } path='/dialogs'/>
+                    <Route render={() => <Main profilePage={state.profilePage} addPost={addPost}/> } path='/profile' />
+                    <Route render={() => <Dialogs messagesPage={state.messagesPage}/>} path='/dialogs'/>
                 </StyledMain>
             </div>
-        </BrowserRouter>
     )
 }
 

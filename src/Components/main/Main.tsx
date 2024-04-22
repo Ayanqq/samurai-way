@@ -6,10 +6,12 @@ import Photo1 from "./../../assets/Asana3808_Dashboard_Standard.jpg"
 import Photo2 from "./../../assets/4k-beautiful-nature-abstract-background_939808-11390.avif"
 import {ProfilePageType} from "../../redux/state";
 
-export type PropsType = {
-    profilePage: ProfilePageType
+type MainPropsType = {
+    profilePage:ProfilePageType
+    addPost:(postTitle:string)=> void
 }
-export const Main = ({profilePage}:PropsType) => {
+
+export const Main = ({profilePage, addPost}:MainPropsType) => {
     return (
         <s.StyledMain>
             <img src={Photo2}
@@ -18,7 +20,10 @@ export const Main = ({profilePage}:PropsType) => {
                 <Profile src={Photo1} alt={'smth photo'}/>
             </s.ProfileInfo>
 
-            <MyPosts posts={profilePage.posts}/>
+            <MyPosts posts={profilePage.posts}
+                     addPost={addPost}
+                     updatedPostText={profilePage.newPostText}
+            />
 
         </s.StyledMain>
     );

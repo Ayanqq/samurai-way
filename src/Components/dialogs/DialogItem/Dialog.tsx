@@ -1,15 +1,15 @@
 import React, {Fragment} from 'react';
 import {NavLink} from 'react-router-dom';
 import s from '../Dialogs.module.css';
-import {MessagesPageType, RootStateType} from "../../../redux/state";
+import {DialogType} from "../../../redux/state";
 
-type DialogType = {
-    messagesPage:MessagesPageType
+type DialogTypeProps = {
+    dialogData:DialogType[]
 }
-export const DialogItem = ({messagesPage }: DialogType) => {
+export const DialogItem = ({dialogData}: DialogTypeProps) => {
     return (
         <>
-            {messagesPage.dialogs.map((el) => {
+            {dialogData.map((el) => {
                 return (
                     <div className={`${s.dialog} ${s.active}`} key={el.id}>
                         <NavLink to={'/dialogs/' + el.id}>{el.name}</NavLink>

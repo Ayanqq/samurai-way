@@ -1,29 +1,42 @@
 import React, {createRef} from 'react';
 import {Post} from "./Post/Post";
-import {ProfilePageType, RootStateType} from "../../../redux/state";
+import {PostType} from "../../../redux/state";
 
+type MyPostsType = {
+    posts:PostType[]
+    addPost:(postTitle:string)=> void
+    updatedPostText: string
+}
 
-export const MyPosts = ({posts}:ProfilePageType) => {
-
-    const addPost = () => {
-        let text = newPostElement.current?.value
-        alert(text)
-    }
-
-    //--Здесь зачем вопросик ? Или это как условный рендеринг?
-    //- хуки в самурае не затрагиваются, потому что классовые компоненты ?
+export const MyPosts = ({posts, addPost, updatedPostText}:MyPostsType) => {
 
     let newPostElement = createRef<HTMLTextAreaElement>()
+
+    const addPostHandler = () => {
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            addPost(text)
+            newPostElement.current.value = ''
+        }
+    }
+
+    let onChangeHandler = () => {
+
+    }
 
     return (
         <div>
             <div>My Posts</div>
             <div>
-                <textarea placeholder='your news' ref={newPostElement}></textarea>
-                <button onClick={addPost}>Add new post</button>
+                <textarea placeholder='your news'
+                          ref={newPostElement}
+                          onChange={onChangeHandler}
+                          value={updatedPostText}
+                />
+                <button onClick={addPostHandler}>Add new post</button>
             </div>
             <div>
-                <Post posts={posts}/>
+                <Post post={posts}/>
             </div>
         </div>
     );

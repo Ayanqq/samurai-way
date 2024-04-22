@@ -3,11 +3,14 @@ import s from "./Dialogs.module.css"
 import styled from "styled-components";
 import {DialogItem} from "./DialogItem/Dialog";
 import {Message} from "./Message/Message";
-import {MessagesPageType} from "../../redux/state";
 import {createRef} from "react";
+import {MessagesPageTypes} from "../../redux/state";
 
+type DialogPropsType = {
+    messagesPage: MessagesPageTypes
+}
 
-export const Dialogs = ({messagesPage}:{ messagesPage: MessagesPageType}) => {
+export const Dialogs = ({messagesPage}:DialogPropsType) => {
 
     const newMessage = createRef<HTMLTextAreaElement>()
 
@@ -19,10 +22,10 @@ export const Dialogs = ({messagesPage}:{ messagesPage: MessagesPageType}) => {
     return (
         <div className={s.dialogs}>
             <div className={s.dialogsItems}>
-                <DialogItem messagesPage={messagesPage}/>
+                <DialogItem dialogData={messagesPage.dialogs}/>
             </div>
             <div className={s.messages}>
-                <Message messagesPage={messagesPage}/>
+                <Message messageData={messagesPage.messages}/>
             </div>
             <div>
                 <textarea ref={newMessage}></textarea>
