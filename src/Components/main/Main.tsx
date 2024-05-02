@@ -9,9 +9,10 @@ import {ProfilePageType} from "../../redux/state";
 type MainPropsType = {
     profilePage:ProfilePageType
     addPost:(postTitle:string)=> void
+    updateNewPostText:(postTitle:string)=> void
 }
 
-export const Main = ({profilePage, addPost}:MainPropsType) => {
+export const Main = ({profilePage, addPost, updateNewPostText}:MainPropsType) => {
     return (
         <s.StyledMain>
             <img src={Photo2}
@@ -23,6 +24,7 @@ export const Main = ({profilePage, addPost}:MainPropsType) => {
             <MyPosts posts={profilePage.posts}
                      addPost={addPost}
                      updatedPostText={profilePage.newPostText}
+                     updateNewPostText={updateNewPostText}
             />
 
         </s.StyledMain>

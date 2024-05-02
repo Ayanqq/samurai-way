@@ -12,28 +12,33 @@ import {Settings} from './Components/settings/Settings';
 import {RootStateType} from "./redux/state";
 
 type AppPropsType = {
-    state:RootStateType,
-    addPost:(postTitle:string)=> void
+    state: RootStateType,
+    addPost: (postTitle: string) => void
+    updateNewPostText: (postTitle: string) => void
 }
 
 function App({
-    state,
-    addPost
-             }:AppPropsType) {
+                 state,
+                 addPost,
+                 updateNewPostText
+             }: AppPropsType) {
     return (
-            <div className={'app-wrapper'}>
-                <Header/>
-                <Sidebar sidebarPage={state.sidebarPage}/>
-                <StyledMain>
-                    {/*<Route component={Dialogs } path='/dialogs'/>*/}
-                    <Route component={News} path='/news'/>
-                    <Route component={Music} path='/music'/>
-                    <Route component={Settings} path='/settings'/>
+        <div className={'app-wrapper'}>
+            <Header/>
+            <Sidebar sidebarPage={state.sidebarPage}/>
+            <StyledMain>
+                {/*<Route component={Dialogs } path='/dialogs'/>*/}
+                <Route component={News} path='/news'/>
+                <Route component={Music} path='/music'/>
+                <Route component={Settings} path='/settings'/>
 
-                    <Route render={() => <Main profilePage={state.profilePage} addPost={addPost}/> } path='/profile' />
-                    <Route render={() => <Dialogs messagesPage={state.messagesPage}/>} path='/dialogs'/>
-                </StyledMain>
-            </div>
+                <Route render={() => <Main profilePage={state.profilePage}
+                                           addPost={addPost}
+                                           updateNewPostText={updateNewPostText}/>}
+                       path='/profile'/>
+                <Route render={() => <Dialogs messagesPage={state.messagesPage}/>} path='/dialogs'/>
+            </StyledMain>
+        </div>
     )
 }
 

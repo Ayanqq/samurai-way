@@ -1,14 +1,16 @@
 import React, {createRef} from 'react';
-import {Post} from "./Post/Post";
 import {PostType} from "../../../redux/state";
+import {Post} from "./Post/Post";
+
 
 type MyPostsType = {
     posts:PostType[]
     addPost:(postTitle:string)=> void
     updatedPostText: string
+    updateNewPostText:(postTitle:string)=> void
 }
 
-export const MyPosts = ({posts, addPost, updatedPostText}:MyPostsType) => {
+export const MyPosts = ({posts, addPost, updatedPostText, updateNewPostText}:MyPostsType) => {
 
     let newPostElement = createRef<HTMLTextAreaElement>()
 
@@ -16,12 +18,18 @@ export const MyPosts = ({posts, addPost, updatedPostText}:MyPostsType) => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
             addPost(text)
-            newPostElement.current.value = ''
+            updateNewPostText('')
+            // newPostElement.current.value = ''
         }
     }
 
     let onChangeHandler = () => {
-
+        if (newPostElement.current) {
+            let text = newPostElement.current.value
+            // console.log(text)
+            updateNewPostText(text)
+            // updatedPostText(text)
+        }
     }
 
     return (
