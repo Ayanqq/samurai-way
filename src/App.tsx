@@ -5,7 +5,7 @@ import {Sidebar} from "./Components/sidebar/Sidebar";
 import {Main} from "./Components/main/Main";
 import {Dialogs} from "./Components/dialogs/Dialogs";
 import {StyledMain} from "./styles/GlobalStyles";
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Route} from 'react-router-dom';
 import {Music} from './Components/music/Music';
 import {News} from './Components/news/News';
 import {Settings} from './Components/settings/Settings';
