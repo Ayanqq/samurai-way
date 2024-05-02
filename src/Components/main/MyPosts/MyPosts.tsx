@@ -21,11 +21,7 @@ export const MyPosts = ({posts, addPost, updatedPostText}:MyPostsType) => {
     }
 
     let onChangeHandler = () => {
-        if (newPostElement.current) {
-            let text = newPostElement.current.value
-            console.log(text)
-        }
-        // console.log(newPostElement.current?.value)
+
     }
 
     return (
