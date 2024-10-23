@@ -36,7 +36,7 @@ function App({
                 <Route render={() => <Main profilePage={state.profilePage}
                                            addPost={addPost}
                                            updateNewPostText={updateNewPostText}/>}
-                       path='/profile'/>
+                       path='/'/>
                 <Route render={() => <Dialogs messagesPage={state.messagesPage}/>} path='/dialogs'/>
 
             </StyledMain>
