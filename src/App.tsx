@@ -5,7 +5,7 @@ import {Sidebar} from "./Components/sidebar/Sidebar";
 import {Main} from "./Components/main/Main";
 import {Dialogs} from "./Components/dialogs/Dialogs";
 import {StyledMain} from "./styles/GlobalStyles";
-import {Route} from 'react-router-dom';
+import {HashRouter, Route} from 'react-router-dom';
 import {Music} from './Components/music/Music';
 import {News} from './Components/news/News';
 import {Settings} from './Components/settings/Settings';
@@ -28,6 +28,7 @@ function App({
             <Sidebar sidebarPage={state.sidebarPage}/>
             <StyledMain>
                 {/*<Route component={Dialogs } path='/dialogs'/>*/}
+
                 <Route component={News} path='/news'/>
                 <Route component={Music} path='/music'/>
                 <Route component={Settings} path='/settings'/>
@@ -37,6 +38,7 @@ function App({
                                            updateNewPostText={updateNewPostText}/>}
                        path='/profile'/>
                 <Route render={() => <Dialogs messagesPage={state.messagesPage}/>} path='/dialogs'/>
+
             </StyledMain>
         </div>
     )

@@ -60,7 +60,7 @@ export let state: RootStateType = {
             {id: 2, message: 'It\'s my first post', likesCount: 11},
             {id: 3, message: 'It\'s my second post', likesCount: 0},
         ],
-        newPostText: 'IT-INCUBATOR'
+        newPostText: ''
     },
     messagesPage: {
         messages: [
