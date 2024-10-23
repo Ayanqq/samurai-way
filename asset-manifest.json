@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/samurai_sc/static/css/main.56451d08.css",
+    "main.js": "/samurai_sc/static/js/main.d7b035e0.js",
+    "static/media/Asana3808_Dashboard_Standard.jpg": "/samurai_sc/static/media/Asana3808_Dashboard_Standard.c7d30d457e1ed60c70a0.jpg",
+    "static/media/4k-beautiful-nature-abstract-background_939808-11390.avif": "/samurai_sc/static/media/4k-beautiful-nature-abstract-background_939808-11390.b406c7c1754b9de72da1.avif",
+    "index.html": "/samurai_sc/index.html",
+    "main.56451d08.css.map": "/samurai_sc/static/css/main.56451d08.css.map",
+    "main.d7b035e0.js.map": "/samurai_sc/static/js/main.d7b035e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.56451d08.css",
+    "static/js/main.d7b035e0.js"
+  ]
+}
